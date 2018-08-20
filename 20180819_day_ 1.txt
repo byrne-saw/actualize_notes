@@ -1,0 +1,51 @@
+Notes from day 1 - 8/19
+
+ls - GFh
+
+>> chevron or waka
+
+rm -rf : remove, recursive, forcefully 
+
+be careful of -f, sudo, git push -f origin master
+
+ctrl c = exit an application 
+
+
+How do you clear all commands in Terminal?
+Clean up the line: You can use Ctrl + U to clear up to the beginning.
+Clean up the line: Ctrl + A Ctrl + K to wipe the current line in the terminal.
+Cancel the current command/line: Ctrl + C .
+Recall the deleted command: Ctrl + Y (then Alt + Y )
+Go at the beginning of the line: Ctrl + A.
+
+ctrl + r = goes though your history
+
+Materialize Sublime Theme
+
+##
+Getting Unstuck
+
+15 min rule - if you're stuck for more than 15 mins stop and ask
+
+Question Prep:
+1) read the error message and find the right error line
+2) print (p) your variables right above/right below the error you're getting
+3) search online with specific keywords *ruby-doc.org
+  -just use the essential words of a question:
+    how do i delete an item from an array -> ruby array delete item
+4) play with the code - try it out in irb
+5) decompose the problem into smaller problems
+6) ask for help with a speciifc question
+
+
+
+Assignment for tonight:
+https://github.com/Actualize-Exercises-and-Drills/2018-07-Code-Blooded
+Directions ^
+
+[ ] Do 'Terminal' Day 1
+
+[x] • Installing Homebrew
+[x] • Installing Ruby
+[x] • Installing Rails
+[x] • PostgreSQL (not sqlite3, mysql

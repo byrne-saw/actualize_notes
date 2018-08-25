@@ -1,0 +1,44 @@
+How does the web work?
+
+clients send out web request to a server (computer optimized to receive web requests) 
+
+servers ping back web responses (html, css, javascript) 
+
+html handles content
+css handles the styling 
+javascript handles behavior (similar to ruby, but in the browser) 
+
+http - hyper text transfer protocol 
+
+HTTP Request
+  GET http://en.wikipedia.org/wiki/stuff
+  verb = GET
+  protocol = http
+  domain = en.wikipedia.org
+  url = wiki/stuff (things that happen after the first single / )
+
+Common Verbs
+  GET - reading 
+  POST - changing 
+    PATCH - for updating information
+    DELETE - removing information 
+
+Status Codes
+  100 - informational
+  200 - success 
+  300 - redirect 
+  400 - client error (your fault) 
+  500 - server errors (my fault) 
+
+
+API - application program interface
+
+A gem is pre-packaged Ruby
+
+https://rubygems.org/ - "all" gems exist here
+
+%20 in a url = space
+
+HTTP Gem
+  https://github.com/httprb/http
+  https://www.rubydoc.info/gems/http/frames

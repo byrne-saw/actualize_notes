@@ -1,0 +1,108 @@
+Notes from day 1 - 8/19
+
+ls - GFh
+
+>> chevron or waka
+
+rm -rf : remove, recursive, forcefully 
+
+be careful of -f, sudo, git push -f origin master
+
+ctrl c = exit an application 
+
+
+How do you clear all commands in Terminal?
+Clean up the line: You can use Ctrl + U to clear up to the beginning.
+Cancel the current command/line: Ctrl + C .
+Recall the deleted command: Ctrl + Y (then Alt + Y )
+Go at the beginning of the line: Ctrl + A.
+
+ctrl + r = goes though your history
+
+Materialize Sublime Theme
+
+##
+Getting Unstuck
+
+15 min rule - if you're stuck for more than 15 mins stop and ask
+
+Question Prep:
+1) read the error message and find the right error line
+2) print (p) your variables right above/right below the error you're getting
+3) search online with specific keywords *ruby-doc.org
+  -just use the essential words of a question:
+    how do i delete an item from an array -> ruby array delete item
+4) play with the code - try it out in irb
+5) decompose the problem into smaller problems
+6) ask for help with a speciifc question
+
+
+
+Assignment for tonight:
+https://github.com/Actualize-Exercises-and-Drills/2018-07-Code-Blooded
+Directions ^
+
+[x] Do 'Terminal' Day 1
+
+[x] • Installing Homebrew
+[x] • Installing Ruby
+[x] • Installing Rails
+[x] • PostgreSQL (not sqlite3, mysql
+
+
+Settings made day one:
+##
+add:
+set completion-ignore-case on
+set show-all-if-ambiguous on
+TAB: menu-complete
+
+to:
+~/.inputrc
+
+##
+add:
+export CLICOLOR=1
+export LSCOLORS=fxFxCxDxBxegedabagaced
+export PS1="\[\033[36m\]\w\[\033[0m\]$ "
+alias ls='ls -GFh'
+
+to:
+~/.bash_profile
+
+
+
+
+###########
+Sublime Settings:
+Add the ability to open Sublime from the terminal
+Open the terminal and paste this command :
+
+ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+
+If there are no error messages, you can now navigate to any folder in the terminal and open it in Sublime using the command subl . in the terminal!
+
+Things that can go wrong:
+You may have an error saying you don’t have permission.
+In that case, run the same command with sudo in front. It will ask you to enter your password (the one you use to log into your computer)
+You may have an error saying subl doesn’t exist.
+In that case, you need to properly install Sublime Text 3 in your Applications folder (you may be running it off of your Desktop by accident)
+You may have an error saying /usr/local/bin/subl does not exist.
+In that case, you need to first make a folder using the command 
+sudo mkdir /usr/local/bin.
+
+Configure your Sublime preferences
+Open Sublime, then open the user preferences file by clicking on the menu option 
+Sublime Text → Preferences → Settings. 
+In the file on the right, add the following lines:
+
+"tab_size": 2,
+"translate_tabs_to_spaces": true,
+"word_wrap": true,
+"save_on_focus_lost": true,
+"highlight_modified_tabs": true,
+"scroll_past_end": true,
+
+Restart Sublime.
+
+Now Sublime is configured to automatically save your code, tab using two spaces, and word wrap long lines of text. You can research more things to configure with Sublime if you’re interested in further customization!

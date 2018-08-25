@@ -1,0 +1,22 @@
+inheritance is called composition 
+
+module has to be at the top, CamelCase
+  a set of conceptual things 
+
+a second way of using modules 
+
+namespacing - creating the box (with module)
+  module::class 
+  no spaced between :: 
+
+class variable 
+
+a class method must begin with self.
+
+rand(1..100)    -- give a random number from 1 to 100
+
+private  - any method below private within a class is not available outside of the class, but can be called within the class
+
+arguments and parameters are synonymous 
+
+setting a default : def example(purple_hippo, pink_elephant="rupert")

@@ -1,0 +1,69 @@
+Assignments / Things to do
+[ ] read the resources page: https://github.com/Actualize-Exercises-and-Drills/2018-07-Code-Blooded/tree/master/Resources
+
+* try to learn a new ruby method each day
+
+[ ] sign up for rubyweekly.com
+
+
+### Git Stuff
+start up a git repo
+• make main folder
+• git init
+• create repo on github with the same name as main folder
+• git add --all
+• git commit -m ‘message’
+• copy remote and push line from github
+
+then continue with
+git add --all
+git commit -m ‘message’
+git push origin master
+Rinse and repeat!
+
+
+####
+Ruby - 
+Local Variable - if defined inside, can't be reached outside & vice versa
+  -must be in snake_case 
+Instance Variable - snake case with @ in front: @variable
+
+Class Variable - @@variable
+Global Variable - $variable 
+CONSTANT
+
+method_name - snake case
+
+class UpperCamelCase - CamelCase
+
+Sublime Shortcuts
+multiple cursors 
+  cmd + d :: 
+  cmd + option :: select multiple lines, same columns 
+
+interpolation - take returned values and put them into a string - #{asfa} 
+
+hash is a list of unique key value pairs (keys are unique) 
+
+" " dynamic
+' ' literal characters 
+
+keys can be anything, strings, integers, whatever - most common is symbols
+  -symbols take up less memory 
+  : at the beginning 
+
+JavaScript syntax for hashes is more common than Ruby syntax for hashes 
+
+
+
+Class - models what an object is (attributes)
+  - what an object can do / does (behavior)
+
+object.method
+
+question to ask - implicit return, returns the "last line of runnable code"
+
+In a hash, every key is accessible, in a class you can prevent some keys from being accessible 
+
+
+

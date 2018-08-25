@@ -1,0 +1,88 @@
+Reading: Playing with text on the command line : https://github.com/veltman/clmystery/blob/master/cheatsheet.md
+
+head [file] - print the first ten lines of a file
+
+
+/files$ head names.txt > first10names.txt
+  > send the output of a command to a new file
+
+
+You can send the output to another command using the pipe symbol (|).
+    /files$ head names.txt | grep "Steve"
+This is basically the same as doing this:
+    /files$ head names.txt > temporaryfile.txt
+    /files$ grep "Steve" temporaryfile.txt
+You can chain as many of these together as you want:
+    /files$ grep "United States" addresses.csv | grep "California" | head
+
+Grep:
+  -lets yous search files for a phrase, by default it will print out each line that matches your search
+      grep "darkwing" famousducks.txt
+  grep -i : makkes the search case-insensitive:
+      grep -i "darkwing" famousducks.txt
+  grep -w : find matches for the exact word:
+      grep -w "Donald" famousducks.txt
+  grep "string" * : find matches in every file in the current directory
+      grep "McDuck" *
+  grep -A # : for each match, print out that line AND the # lines after it:
+      grep -A 4 "Howard" famousducks.txt
+  grep -B # : for each match, print out that line AND the # lines before it:
+      grep -B 4 "Howard" famousducks.txt
+  grep -C # : for each match, print out that line AND the # lines before it AND the # lines after it
+      grep -C 4 "Howard" famousducks.txt
+  grep -l : print out filenames that match your search: 
+      grep -l "Daffy" *
+  grep -c : just get the number of matches
+      grep -c "Daffy" *
+  grep -n : show line numbers along with matching lines
+      grep -n "Daffy" famousducks.txt
+
+
+Cat:
+  - combines mutiple files together, and prints them to the terminal
+    cat turkey.txt duck.txt chicken.txt
+  bind the printed output to a file with > newfile.txt
+    cat turkey.txt duck.txt chicken.txt > turducken.txt
+  use a wild card to combine ALL of the files in a directory
+    cat * > allfilescombined.txt
+
+Head: 
+  -print out first 10 lines of a file (default) 
+    head names.txt
+  specificy a different # of lines
+    head -n # file.txt
+  if you want to print all the file but leave out the LAST 15 lines, you can give a negative number
+    head -n -15 names.txt
+      *this didn't seem to work
+
+  *One of the nice uses of head is to quickly peek inside a large text file to see what's in it without having to wait for a text editor to load it. This becomes a big deal when you're talking about a 1 GB file!
+
+  Tail:
+    -reverse of head, will print out the last 10 lines of a file
+      tail names.txt
+    specificy a different # of lines
+      tail -n 15 names.txt
+    print all the file but leave out the FIRST 15 lines, you can add a plus sign
+      tail -n +15 names.txt
+    remove a header row from a CSV file:
+      tail -n +1 names.txt > names-no-header.txt
+        *this didn't seem to work
+
+
+Misc: 
+  How many lines are in names.txt?
+    wc -l names.txt
+
+
+Regular expressions:
+  When using something like grep to search, you can search for a simple term with only letters, numbers, and spaces. But if you want to search for a pattern, you can use what's called a regular expression. Regular expressions use special characters to represent patterns, like "any number," "any letter," "X or Y," "at least three lowercase letters," and so on.
+
+  one useful operator is the period (.). In regular expression-ese, this means "One of any character." So you can search for something like:
+    
+    grep -i "car.s" dictionary.txt
+    
+      This would match words like cards,carts,cares, and so on. It would also match the middle of the phrase "scar story" (CAR S) because "any character" means ANY character, including a space or a punctuation mark.
+
+    grep -i ".e.st" dictionary.txt
+      This would match things like least,beast, and heist.
+

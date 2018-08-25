@@ -1,0 +1,40 @@
+Reading: Object hierarchy in Ruby : https://www.leighhalliday.com/object-hierarchy-in-ruby
+
+    class Animal
+    end
+
+    p Animal.ancestors
+    # [Animal, Object, Kernel, BasicObject]
+
+
+Where did these objects come from?
+
+  Object:
+    -is the default parent of all classes in Ruby. 
+
+  Kernel: not actually a class, but a module included inside of the Object class. (puts, raise, Array)
+
+  BasicObject:
+    -parent of all parents inside of Ruby. contains methods like new
+
+
+Creating our own hierarchies
+
+  "sub-classes" - extend from, or is the child of another Class. 
+    ex class Animal could have a sub-class Alpaca
+
+
+
+Single inheritance
+
+  Ruby only allows you to have a single parent. There are ways to get around this though.
+
+  Module:
+    -A module is a way to group a set of related constants and methods together.
+    -can't be instantiated, but they can be included inside of objects, giving whatever functionality they have to the object they were included into.
+
+
+Which method will be called?
+  When you call a method inside of your object, what Ruby does is to first check if this method exists inside our current context, or the self context in other words. If it doesn't find it there, it continues up the ancestor chain until it finds the method.
+
+  If it doesn't find the method, Ruby will automatically invoke the method_missing method, giving you one last chance to deal with the fact that this method doesn't exist. Where does method_missing exist? It lives in BasicObject, the parent of all parents!

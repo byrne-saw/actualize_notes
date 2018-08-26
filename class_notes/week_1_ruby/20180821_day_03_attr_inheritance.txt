@@ -1,0 +1,129 @@
+attr_reader 
+attr_writer
+^these methods replace:
+
+def reader
+  @reader = reader
+end
+
+https://mikeyhogarth.wordpress.com/2011/12/01/creating-your-own-attr_accessor-in-ruby/
+^ more info
+
+cmd + shift + v will keep indentation
+
+wet code - write everything twice
+dry code - do not repeat yourself
+
+
+everything that repeats can be inherited - inheritance 
+with inheritance, it must be a type of a thing
+  every manager is an employee, not every employee is a manager
+
+times loop block variable increments by 1 each loop (starts at 0) 
+
+block variables' scope are only within the block
+
+enumerable - methods that go though a list
+
+
+
+##########################
+Re-watching day 3 lecture:
+##########################
+
+Classes model attributes and behaviors. 
+Attributes are in initialize.
+  -instance variables
+Behavior = methods
+
+Reader methods - 
+  provides info, allows access outside of the class to read that attribute.  Displays/retrives information currently held in an attribute
+
+    attr_reader :first_name 
+      **is the same as:
+    def first_name
+      @first_name
+    end
+
+Writer methods - 
+  change/set the value of an attirbute from outside the class
+
+    attr_writer :first_name
+      **is the same as:
+    def first_name=(new_value)
+      @first_name = new_value
+    end
+
+
+Pass a hash to Class - you're only passing "one" thing in. If you don't pass something in initialize, it will just be nil. 
+  order of symbols doesn't mater
+
+
+Idiomatic Ruby - can drop certain characters because ruby assumes what you're doing. "it's acting like a X, I'm going to treat it as a X"
+  
+  Employee.new({first_name: "Bill", last_name: "McNeal"})
+    **is the same as:
+  Employee.new(first_name: "Bill", last_name: "McNeal")
+        ^js style of hashes
+
+  Most commonly written:
+    Employee.new(
+                first_name: "Bill", 
+                last_name: "McNeal"
+                )
+
+
+Everything that repeats can be inherited from another Class.
+  class Manager < Employee
+
+Inheritance 
+  -must be a type of a thing
+  -every manager is an employee, not every employee is a manager
+
+If it's a type of object make sure not to name it a concept, so I can't have a transportation. Vehicle.new - I can have a vehicle. 
+
+Every object must be initialized with the initialize method. 
+
+Super 
+  -runs inside initialize, brings in the same arguments as the class from which is being inherited 
+
+.class with return the class of a particular thing
+.superclass will return the class that a particular things inherits from
+
+
+##
+
+times loop vs each loop
+
+times loop:
+    ...
+    index = 0
+    @employees.length.times do
+      employee = @employees[index]
+      index += 1
+    end
+    ...
+
+times loop with block variable: times loop block variable starts at 0 and increments each times it runs
+    ...
+    index = 0
+    @employees.length.times do |index| 
+      employee = @employees[index] 
+    end
+    ...
+
+#Block Variable#
+each loop: the block variable of each will equal the 1st element, the first time it is run; 2nd second, 3rd third...
+
+    ...
+    @employees.each do |employee| 
+
+    end
+    ...
+
+
+*if you have an array, it's most common the name of what every holds the array should be plural, and the block variable of an each loop would be singular
+
+enumerable:
+  -means going through a list of something. An enumerable is an object that may be enumerated. " Enumerated" means to count off the members of a set/collection/category one by one (usually in order, usually by name). An enumerable then is an object that can step through a series of other objects one by one.
+

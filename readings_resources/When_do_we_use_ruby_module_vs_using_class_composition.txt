@@ -1,0 +1,31 @@
+Reading: When do we use ruby module vs using class composition? : https://stackoverflow.com/questions/15754768/when-do-we-use-ruby-module-vs-using-class-composition
+
+When the relationship between Helper and the MyStuff class is one of ownership, use composition. This is known as a "has-a" relationship. For example, let's say you have Person class and a Car class. You would use composition because a person has a car:
+
+    class Person
+      def initialize
+        @car = Car.new
+      end
+    end
+
+    class Car
+      def accelerate
+        # implementation
+      end
+    end
+
+When Helper "acts like" MyStuff, use a module mixin. Helper, in this case, takes on the role of MyStuff. This is a bit different than a "is-a" relationship, which would imply that you should use traditional inheritance. For example, let's say we have a Person class and a Sleeper module. A person takes on the role of a sleeper sometimes, but so do other objects--instances of Dog, Frog, or maybe even Computer. Each of those other classes represent something that can go to sleep.
+
+    module Sleeper
+      def go_to_sleep
+        # implementation
+      end
+    end
+
+    class Person
+      include Sleeper
+    end
+
+    class Computer
+      include Sleeper
+    end

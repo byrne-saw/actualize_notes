@@ -1,0 +1,46 @@
+inheritance is called composition 
+
+module has to be at the top, CamelCase
+  a set of conceptual things 
+
+a second way of using modules 
+
+namespacing - creating the box (with module)
+  module::class 
+  no spaced between :: 
+
+class variable 
+
+a class method must begin with self.
+
+rand(1..100)    -- give a random number from 1 to 100
+
+private  - any method below private within a class is not available outside of the class, but can be called within the class
+
+arguments and parameters are synonymous 
+
+setting a default : def example(purple_hippo, pink_elephant="rupert")
+
+
+
+##########################
+Re-watching day 4 lecture:
+##########################
+
+Modules
+  -key piece, only for behaviors, not for attributes
+  -CamelCase
+  -module must come first
+  -name should not describe some "thing" - a set of conceptual things - "able" ex Math, "Reportable"
+  -method goes into module
+  -in the class you want to use a module in, you use: include ModuleName
+  -never defined inside a class (might be functionally possible but the idea is to access it outside of a class)
+  -only available 
+
+"Mixin" or "Composition" are names for the act of using module. 
+
+def initialize - debate on if the initalizae method should be "mixin", Josh doesn't, would make a class to inherit to do that. 
+
+Modeules are effective when subclasses share behavior that a superclass doesn't have. 
+
+ 

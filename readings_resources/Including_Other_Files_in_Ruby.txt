@@ -1,0 +1,14 @@
+Reading - Including Other Files In Ruby - http://rubylearning.com/satishtalim/including_other_files_in_ruby.html
+
+ruqiure & load:
+  -both global functions defined in Object, but used like language keywords
+
+load - includes the named Ruby source file every time the method is executed
+  load 'filename.rb'  
+
+require - loads any given file only once (Note that you say require 'filename', not require 'filename.rb'.)
+  require 'filename'  
+
+
+*IN RAILS: Rails uses load in preference to require, for example, in development mode - which means that if you're trying your application in a browser and making changes to the code at the same time, your changes are reloaded, overriding any caching behavior on the part of the Web server. Multiple require calls in the same place don't have the same effect if the application has already read the file in once.
+

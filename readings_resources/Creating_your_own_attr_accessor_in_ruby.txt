@@ -1,0 +1,6 @@
+Reading: Creating your own attr_accessor in Ruby: https://mikeyhogarth.wordpress.com/2011/12/01/creating-your-own-attr_accessor-in-ruby/
+
+attr_accessor     gives you a getter and a setter
+attr_reader       just gives you a getter
+attr_writer       just gives you a setter
+

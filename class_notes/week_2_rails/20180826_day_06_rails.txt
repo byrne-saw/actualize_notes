@@ -1,0 +1,87 @@
+Rails
+
+What is rails? 
+  -frame work for building web apps in ruby
+  -considered a convention over configuration framework
+  -can scale well
+  -very popular with startup companies - get deliver quickly
+
+What is a framework?
+  -Tons of pre-written code, huge timesaver at the cost of assumptions (potentially taking away options) - less configuration, more convention 
+
+Configuration over convention frameworks include examples?
+
+Controllers are always plural.
+
+rails server - starts the application, let's you access the rails app in a browser
+ctrl C - shuts downserver
+
+localhost:3000 - the port where the app will live
+
+***
+  Never close the terminal window while running the server - always use ctrl C to shut down the server
+
+
+
+
+▼ ▼ ▼ ▼ STEPS ▼ ▼ ▼ ▼
+---------------------
+1. WEB REQUEST
+2. API ROUTE
+3. API CONTROLLER
+4. WEB RESPONSE
+
+***
+  cmd + option + shift + # - builds windows on top of each other sublime
+
+
+whenever we run a method that produces a view, in the controller the methods are referred to as actions (for clarifcation in class) 
+
+everytime you have an action, you have to have a render
+actions should never print - they always go to the terminal
+
+to get data from an action to a view you have to use an instance @variable
+
+
+Steps we took to create sample_app
+      rails new sample_app
+      cd sample_app
+      rails generate controller api/example_pages
+      rake db:create
+      rails server
+
+
+rails c
+  -this is like irb, but for Rails
+
+
+** the name of controllers must be plural
+
+
+route, controller, view
+
+ada lovelace
+
+
+## 
+
+White Boarding
+
+  1) repeating the question back is important in interviews
+  2) write expected input and output
+      -write example of each
+      -this is useful for buying time to think as well as clarifying 
+  3) pseudo code your solution in plain english (try not to use coding words)
+  4) draw out your algorithm visually with the values of variables or data as it would move through your code
+  5) obtain a convert your pseudo code into real code
+  6) walk though each step of your code and draw out what is happening
+    -helpful to use a table for this
+  7) analyze the efficiency and re-factor 
+
+
+* all languages how some sort of times loop, not all have an each loop
+* it is ok to short hand some things (out side of the code, good for step 6), always write out the data completely 
+* write out a return value (implicit likely)
+* worst interviews are when interviewee attempts to solve silently 
+
+

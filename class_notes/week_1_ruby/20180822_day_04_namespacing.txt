@@ -35,12 +35,57 @@ Modules
   -method goes into module
   -in the class you want to use a module in, you use: include ModuleName
   -never defined inside a class (might be functionally possible but the idea is to access it outside of a class)
-  -only available 
+  
+
 
 "Mixin" or "Composition" are names for the act of using module. 
 
-def initialize - debate on if the initalizae method should be "mixin", Josh doesn't, would make a class to inherit to do that. 
+def initialize - debate on if the initialize method should be "mixin", Josh doesn't, would make a class to inherit to do that. 
 
-Modeules are effective when subclasses share behavior that a superclass doesn't have. 
+Modules are effective when subclasses share behavior that a superclass doesn't have. 
 
- 
+super() brings in the super class's initialize 
+
+Namespacing
+  -using modules to "box-in" parts of our program. allows code to play well with others' code - ie if both codes have an employee class, they can be kept separate with use of modules. 
+
+To call a class that is namespaced - Module::Class.new
+
+##
+
+Class Variables vs Instance Variables 
+
+  Instance variable (@) exists anywhere within an object
+
+   Class variable (@@) 
+
+class Sheep
+  @@count = 0
+  def initialize(name)
+    @name = name
+    @@count += 1
+    @id = @@count #allows you to indirectly access the class variable within an object
+  end
+end
+
+
+Class Method - self.method_name
+
+
+Private vs Public: 
+  -any method found belove the word private inside the class are considered unavailable outside of the class, but still accessible within the class
+
+
+## 
+
+arguments (aka parameters) 
+
+I want to give an argument sometimes, but not always - setting a default.
+
+
+##
+
+splat
+  def example(*trees)
+
+  allows you to give any number of arguments, the arguments are collected into an array

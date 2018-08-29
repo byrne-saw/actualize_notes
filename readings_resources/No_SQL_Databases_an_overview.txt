@@ -1,0 +1,85 @@
+Reading: NoSQL Databases: An Overview: https://www.thoughtworks.com/insights/blog/nosql-databases-overview?utm_source=dbweekly&utm_medium=email
+
+NoSQL:
+  -"Not Only SQL" - no prescriptive definition, but common observations:
+    -not using the relational model
+    -running well on clusters
+    -mostly open-source
+    -built for the 21st century web estates
+    -schema-less
+
+Using NoSQL databases allows developers to develop without having to convert in-memory structures to relation structures.
+
+The rise of the web as a platform also created a vital factor change in data storage as the need to support large volumes of data by running on clusters. 
+
+Relational databases were not designed to run efficiently on clusters.
+
+Aggregate Data Models:
+  -an aggregate is a collection of data that we interact with as a unit. 
+  -Key-value, Document, and Column-family databases can all be seen as forms of aggregate-oriented database
+  -aggregates make it easier for the database to manage data storage over clusters
+
+Distribution Models:
+  Aggregate oriented databases make distribution of data easier, since the distribution mechanism has to move the aggregate and not have to worry about related data, as all the related data is contained in the aggregate. 
+  -Sharding: Sharding distributes different data across multiple servers, so each server acts as the single source for a subset of data.
+  -Replication: Replication copies data across multiple servers, so each bit of data can be found in multiple places. Replication comes in two forms,
+      -Master-slave replication makes one node the authoritative copy that handles writes while slaves synchronize with the master and may handle reads.
+      -Peer-to-peer replication allows writes to any node; the nodes coordinate to synchronize their copies of the data
+
+CAP theorem:
+  (C)onsistency, (A)vailability, (P)artition Toleration
+  
+  -Eric Brewer put forth the CAP theorem which states that in any distributed system we can choose only two of consistency, availability or partition tolerance.
+
+  The availability of choice in NoSQL databases, is both good and bad at the same time. 
+  -Good because now we have choice to design the system according to the requirements. 
+  -Bad because now you have a choice and we have to make a good choice based on requirements and there is a chance where the same database product may be used properly or not used properly.
+
+
+Types of NoSQL Databases:
+  1) Key-Value databases:
+    -simplest to use from an API perspective
+    -value is a blob that the data store just stores, responsibility of the app to know what's inside.
+    -always use primary-key access and generally have great performance and can be easily scaled
+
+  2) Document databases:
+    -documents are stored and received
+    -XML, JSON, BSON...
+    -self describing, hierarchical tree data structures
+    -store documents in teh value part of the key-value store
+    -MongoDB
+
+  3) Column family stores
+    -store data in column families as rows that have many columns assoicated with a row key
+    -column families are groups of related data that is often accessed together
+      -for a customer we would often access their profile info at the same time, but not thier orders
+    -Each column family can be compared to a container of rows in an RDBMS table where the key identifies the row and the row consists of multiple columns. The difference is that various rows do not have to have the same columns, and columns can be added to any row at any time without having to add it to other rows.
+    -When a column consists of a map of columns, then we have a super column. A super column consists of a name and a value which is a map of columns. Think of a super column as a container of columns.
+    -Cassandra is a popular column-faimly db
+
+  4) Graph Databases
+    -store entities and the relationships between these entities 
+    -entities are also known as nodes
+    -think of a node as an instance of an object
+    -relations are known as edges that can have properties
+    -The organization of the graph lets the data to be stored once and then interpreted in different ways based on relationships.
+    -The organization of the graph lets the data to be stored once and then interpreted in different ways based on relationships.
+
+
+Why choos NoSQL database:
+  -improve productivity by using a db that better matches an applications need
+  -improve data access performance via some combination of handling larger data volumes, reducing latency, and improving throughput
+
+
+Choosing NoSQL database:
+  -Key-value databases are generally useful for storing session information, user profiles, preferences, shopping cart data.
+  -Document databases are generally useful for content management systems, blogging platforms, web analytics, real-time analytics, ecommerce-applications.
+  -Column family databases are generally useful for content management systems, blogging platforms, maintaining counters, expiring usage, heavy write volume such as log aggregation.
+  -Graph databases are very well suited to problem spaces where we have connected data, such as social networks, spatial data, routing information for goods and money, recommendation engines
+
+
+Schema-less ramifications:
+  -means no schema enforced by the database itself
+
+
+We are entering an era of polyglot persistence, a technique that uses different data storage technologies to handle varying data storage needs. Polyglot persistence can apply across an enterprise or within a single application. 

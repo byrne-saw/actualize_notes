@@ -1,0 +1,16 @@
+Read: Method Signature You Can Sink Your Teeth Into : https://www.sitepoint.com/method-signature-you-can-sink-your-teeth-into/
+
+Real keyword arguments
+
+Argument categories:
+  -required
+  -optional
+  -arguments with default values
+
+Proper syntax for methods:
+  -methods are declared by def 
+  -then method name, must begin with lowercase letter 
+  -snakecase for method names with multiple words
+  -after method name we pass our params inside parentheses
+  -keyword end signals the end of the method and must be preceded by a newline of semi-colon
+

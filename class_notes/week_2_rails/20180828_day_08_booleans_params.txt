@@ -1,0 +1,65 @@
+
+Attributes as columns
+Objects as rows
+
+controllers must be snake case (and plural!) 
+
+Some shortcuts:
+  when generating a model, string is the default type, you can leave out the :string
+  rails g model ..... is the same as rails generate model ......
+
+
+adding all the elements to a view file
+
+  json.array! @products.each do |prodcut|
+    json.id produdct.id
+    json.name product.name
+    json.description product.description
+    json.image_url prodcut.image_url    
+  end
+
+cmd + shift + enter (add a line above, and move there, can be anywhere in the line your leaving)
+
+cmd + enter (add a line below and move to it)
+
+
+
+## "Deeper into Ruby Conditionals"
+Booleans
+
+The one rule:
+  False/Nil ----------> Falsey
+  Everything else ----> Truthy
+
+To determine whether an expression is truthy or falsey:
+  !!(expression)
+
+if a method ends in ? we assume the return value is a boolean (convention)
+
+&& (and)
+  - && moves forward as long as the previous object is truthy. 
+  - 5 && 6 - this would read as "5 and 6"
+
+* the value, and the valuation are two different things
+
+
+|| (or)
+  || moves forward as long as the previous object is falsey
+
+
+
+####
+
+params - passing along information from the user (to api / web app)
+
+3 ways to pass info from a user to a web app
+  1) string query params
+  2) url segment params
+  3) body params (sometimes referred to as form params)
+
+params are always a hash
+
+String Query Params:
+  ? in url path defines the string query params
+
+params - a rails thing in controller, gives access to the string query params

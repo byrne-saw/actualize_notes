@@ -1,0 +1,66 @@
+Databases
+
+Capitalization Cheat Sheet
+https://docs.google.com/document/d/1aqsm5k5h4WYcpSPm4F2MXBm2Kkn76p0L0sDB9H_Gx2Y/edit?usp=sharing
+
+model 
+  - "close" to a class - we're modeling a "thing" inside our database
+  -you have to declare the attribute and data type
+  attribute:data_type - watch the spaces...
+  -always singular 
+
+
+CRUD
+  create
+  read
+  update
+  delete
+
+
+
+How to get rid of a database
+-from within the directory, rake db:drop
+^do this before deleting an app (v important)
+
+##
+separation of concerns
+  -modular, in small pieces
+
+MVC - Model View Controller 
+  Rails is a MVC framework.
+  iPhone apps are MVC
+
+Model = Stored Data
+  -Defines how we interact with stored information 
+  "It's where we store, and interact with data"
+  -ORM = ActiveRecord
+      Object Relational Mapping software
+    table in database
+    class in models folder
+
+View - Interface
+  -Defines our interface
+  -JSON or HTML
+  -Forms
+  -other apps, ex: iPhone view is just the part of Swift that appears to the user
+  "the visual display, or the interface"
+
+Controller = Logic Flow
+  -the leader, analyzing and giving commands
+  -combines the pieces together
+  -usually involves if statements, filters, or CRUD operations
+
+
+
+##
+
+seeds.rb
+  -this file runs things in the terminal, and has access to the database
+  -data that is local, will not get populated to a server, you need to re-seed the db
+  -you can write CRUD operations here
+  "a plan ruby file, executed with rake db:seed, that has access to the database"
+
+  ##
+
+Gems 
+  - anytime you change your gem file, you need to stop server and run "bundle"

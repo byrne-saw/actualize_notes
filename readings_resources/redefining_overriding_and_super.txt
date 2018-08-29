@@ -1,0 +1,16 @@
+Reading: Redefining, overriding, and super: http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/37-classes-inheritance/lessons/88-redefining-overriding-and-super
+
+
+
+Redefining methods:
+  -Redefining a method involves simply replacing one method with another. The original method is simply... lost.
+  -Since almost every method in Ruby can be redefined, great care must be taken especially with core Ruby classes like Object, Array and so on. A thoughtless method redefinition can break the language entirely. A good rule of thumb is "Never redefine methods, ever, especially with classes supplied by the language."
+
+
+Overriding methods: 
+  -Overriding in the context of classes involves defining a method in a subclass that is already defined in the superclass. This results in the method being overridden in the subclass, but doesn't in any way affect the method in the superclass.
+
+
+  Super Powered
+    -A common use of inheritance is to have overridden methods in a subclass do something in addition to what the superclass method did, rather than something entirely different
+    -Most object oriented languages offer a mechanism by which an overridden method can be called by the overriding method. Ruby uses the super keyword to make this happen. Using super will call the same method, but as defined in the superclass and give you the result.

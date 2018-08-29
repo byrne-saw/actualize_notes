@@ -14,3 +14,96 @@ Proper syntax for methods:
   -after method name we pass our params inside parentheses
   -keyword end signals the end of the method and must be preceded by a newline of semi-colon
 
+
+##Argument Processing##
+
+No Params:
+  -define a method with no arguements, call it with no arguments.
+
+Ordinal Params
+  -arguments supplied to the methods must be sent in the order established in teh methods signature
+  -It is not a syntax error to pass the arguments out of order, but internal to the method they will reference the values as they are sent.
+
+Params with Default Values
+  -default values can be passed as parameters to methods
+  -inside the method declaration use the equal sign (=) to set the default value:
+    def example_method(a,b="default_b_value")
+    end
+  -Since b now has a default value, the method can be called example_method("a_value") or example_method("a_value", "b_value"). Here example_method is still an ordinal method because it depends on the order of the arguments. However, this technique gives us much more control over the interface to this method.
+
+Hash Params
+  -let's you handle handle an arbitrary number of arguments to a given method
+  -most common way is with a hash
+
+            def example_method(options)
+              puts options[:message]
+            end
+            example_method({message: "Hello, World!"})
+
+            #=> Hello, World!
+
+        # If your options hash is the last or only param, you may leave off the braces. This is why this technique is sometimes referred to as “Pseudo-Keyword” arguments, because it resembles keywords, but is really just hiding a hash.
+
+        # the above method could be called like so (in 1.9)
+
+           example_method(message: "Hello, World!")
+
+        # Or with options at the end of a list of params.
+
+           def example_method(ordinal_a, ordinal_b, options)
+             p [ordinal_a, ordinal_b, options]
+           end
+           example_method("Yo", "Sup", message: "Hello, World!")
+
+
+
+Arguments as an Array
+  *(splat) operator: allows you to pass in an arbitrary number of arguments into a method, collecting them as an array
+
+          def example_method(*args)
+            p args
+          end
+          -> example_method("argument_one", "argument_two")
+
+          #=> ["argument_one", "argument_two"]
+
+    #An important note is that since the splat operator will greedily snatch up all values at (position..position+n), it should only be use as the last or only parameter.
+
+
+Keyword Arguments
+  With keyword arguments, you can simply define the method like so:
+          def display_name(first_name: "George", last_name: "Jetson")
+            p "#{last_name}, #{first_name}"
+          end
+          display_name(last_name: "Jetson")
+
+          #=> "Jetson, George"
+
+   This method could be invoked in any of the following ways:
+          display_name
+
+          #=> "Jetson, George"
+
+          #
+          display_name(first_name: "Judy")
+
+          #=> "Jetson, Judy"
+
+          #
+          display_name(last_name: "Jefferson")
+
+          #=> "Jefferson, George"
+
+          #
+          display_name(last_name: "Flinstone", first_name: "Fred")
+
+          #=> "Flinstone, Fred"
+
+
+
+
+
+
+
+More on Proc - but i don't follow it enough to take notes yet
+

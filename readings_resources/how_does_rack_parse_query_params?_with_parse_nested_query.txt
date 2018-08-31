@@ -1,0 +1,8 @@
+Reading: How Does Rack Parse Query Params? With Parse_nested_query: http://codefol.io/posts/How-Does-Rack-Parse-Query-Params-With-parse-nested-query/
+
+What turns URL params like http://site.com/people?name=bobo into { :name => “bobo” } in Ruby?
+
+And what turns extra-weird Rails or Sinatra params like /path?people[][name]=bobo&people[][first_love]=cheese?
+
+Rails uses Rack to parse them, so it’s (mostly) the same in Sinatra, Padrino or your ruby web framework of choice as well.
+

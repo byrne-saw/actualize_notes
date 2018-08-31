@@ -1,0 +1,25 @@
+RESTful Routing
+
+Rails expects you to use RESTful routing. 
+
+category -> thing
+
+Model/id
+
+Roy T. Fielding - RESTful
+  HTTP Verb | Path | Controller#Action
+
+you can pull from params using symbols (best practice) 
+
+create:
+  - make a new instance POST
+  -you will need insomnia or a ruby script to test this out
+
+Security Problem
+  in application_controller.rb
+  add:
+    protect_from_forgery with: :null_session
+  to the class
+
+update
+  -PATCH

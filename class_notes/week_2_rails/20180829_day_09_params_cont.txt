@@ -1,0 +1,19 @@
+you can write logic (like an if statement) in a view
+  it's not a hard law to keep logic in the controller, but you should really only do it if you're changing the json
+
+puts or p in the controller will print to the terminal
+
+
+url segment params
+  get "/home/:wildcard"
+  url segment is any piece in between / /  
+
+: on the routes page define a wild card
+: in the url will always break
+
+
+from params (body params)
+  -the only way to send body params is with post, patch, or delete (not get)
+
+
+use insomnia whenever you need to send non-get requests

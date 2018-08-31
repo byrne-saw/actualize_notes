@@ -60,6 +60,20 @@ params - passing along information from the user (to api / web app)
 params are always a hash
 
 String Query Params:
-  ? in url path defines the string query params
+  ? in url path defines the string query params (key value pairs)
+  & separates the key value pairs
 
-params - a rails thing in controller, gives access to the string query params
+params 
+  - a keyword in rails, only accessible in the controller actions called params
+  -defined by rails
+  -gives access to the special hash in the url
+  -@instance_variable = params["key"]
+
+
+
+
+
+
+
+
+

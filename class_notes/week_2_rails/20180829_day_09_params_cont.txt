@@ -17,3 +17,42 @@ from params (body params)
 
 
 use insomnia whenever you need to send non-get requests
+
+####
+Re-watching Lecture on Params
+####
+
+Params: (parameters)
+  -passing along info from the user to our API/web application
+  -Params are always a hash
+  -params is a keyword in rails only accessible in the controller action, gives access to the special hash in the url path 
+  -Params is just an empty hash that the user fills
+
+
+In routes.rb:
+  verb XXXXXXXX => YYYYYYY#ZZZZZZZ
+  X : the thing in the url path that follows my domain
+  Y : controller it's looking for
+  Z : the action ()
+
+
+when you use puts in a controller file, it prints to the terminal
+
+Logic goes in the controller action as a general rule of thumb. Logic can go in the view, but it should be limited to modifying the actual view (what key value might be displayed). Ex
+  if @message
+    json.message @message
+  end
+
+
+3 types of Params:
+  1) String Query Params
+  2) URL Segment Params
+  3) Body Params aka Form Params
+
+String Query Params:
+  - ?  defines the string query params: everything following a ? in the url are string query params
+  use & to separate multiple params in the url path 
+  - you can add any number of string query params to a url, but only the ones in a controller action would be used/accessed
+
+
+URL Segment Params:

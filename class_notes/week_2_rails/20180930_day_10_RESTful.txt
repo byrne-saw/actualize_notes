@@ -16,7 +16,7 @@ create:
   -you will need insomnia or a ruby script to test this out
 
 Security Problem
-  in application_controller.rb
+  in application_controller.rb 
   add:
     protect_from_forgery with: :null_session
   to the class

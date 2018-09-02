@@ -1,0 +1,48 @@
+Reading: A Gentle Introduction to tmux: https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340
+Tmux Cheat Sheet: https://gist.github.com/MohamedAlaa/2961058
+####
+in bash:
+####
+
+tmux new - start a new session
+tmux ls - list all running sessions
+tmux a # - attach to session #
+tmux kill-server - Kill tmux server, along with all sessions
+
+# Naming Sessions:
+tmux new -s [name of session] - create as session with a name
+tmux a -t [name of session]
+
+
+#####
+In tmux
+Everything below assumes the prefix first 
+ctrl+a - prefix shortcut
+#####
+  : - get a tmux prompt
+  d - detatch - The detached session can still available, allowing you to pick up where you left off
+
+# Managing Panes
+  " - split a pane horizontally
+  % split a pane vertically
+  [arrow key] - move pane to pane, i've also remaped h,j,k,l to move around like vim
+  x - kill current pane
+  [space] - toggle between 
+  q - (Show pane numbers, when the numbers show up type the key to goto that pane)
+  { - (Move the current pane left)
+  } - (Move the current pane right)
+  z - toggle pane zoom
+  t - big clock
+
+# Resizing Panes
+  prefix : resize-pane [direction flag] [# of lines to move by]
+  direction flags -U up, -D down, -L left, -R right
+
+# Windows(tabs)
+  c - create window
+  w - list windows
+  n - next window
+  p - previous window
+  f - find window
+  , - name window
+  & - kill window

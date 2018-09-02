@@ -38,11 +38,12 @@ In routes.rb:
 
 when you use puts in a controller file, it prints to the terminal
 
-Logic goes in the controller action as a general rule of thumb. Logic can go in the view, but it should be limited to modifying the actual view (what key value might be displayed). Ex
-  if @message
-    json.message @message
-  end
-
+Logic goes in the controller action as a general rule of thumb. 
+  -Logic can go in the view, but it should be limited to modifying the actual view (what key value might be displayed). Ex
+    if @message
+      json.message @message
+    end
+  -changes the keys available to the view
 
 3 types of Params:
   1) String Query Params
@@ -56,3 +57,17 @@ String Query Params:
 
 
 URL Segment Params:
+  -any piece in between to // after the domain
+  -a way of defining pieces of our url to take in information.
+  -wild card - :wildcard 
+  - : are only used on the routes page, not in the url
+  - rails let you the params hash allows you treat keys as symbols or strings interchangeably 
+
+Body Params (Form Params):
+  - we send Form Params though HTML
+  - can't be sent though get (or url bar)
+  - body params are typically sent for security (get requests can been seen publicly)
+  - request has meta info (head) and body
+
+
+

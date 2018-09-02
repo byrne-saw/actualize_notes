@@ -23,3 +23,20 @@ Security Problem
 
 update
   -PATCH
+
+###
+Re-watching lecture day 10
+###
+
+Rails expects you to use RESTful routing. 
+
+Make it dynamic, a pattern that can be used over and over again. 
+
+Roy T. Fileding - designer of RESTful routing
+
+7 restful routes
+
+Params can be accessed with :symbol_keys, but params are only passed through as strings. Example of "Rails" magic...
+
+
+

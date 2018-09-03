@@ -1,0 +1,139 @@
+Capstones: we'll spend about 6 weeks coding
+  -getting a list of Gems, APIs and Tech to research
+      https://docs.google.com/document/d/1WPC2dtLHdo2FVk6Bi_w2oNLvnkOJCurdUFWyf9oSfXI/edit?usp=sharing
+  -don't plan on changing your idea
+  -MVP - minimum viable product - must hit MPV to graduate class, minimal user experience, text based app - still lets you solve a problem
+  -We'll need 3 goals
+    MVP
+    Tier2 - "next level up" external API, JS library
+    Tier3 - something crazy, might not be able to get to this
+    Tier4 - reaching further 
+  -plan to generate ~ 5 ideas at a minimum 
+  -API Directory: https://www.programmableweb.com/apis/directory
+
+##
+Model Methods
+##
+
+spilt - breaks a string up and puts it into an array by default using spaces 
+
+added this in the view because we're just changing the json displayed, but this breaks our rule of keeping logic out of the view - enter model methods - this is similar to Class
+
+A model's class is definied in the models/ directory - model_name.rb
+
+3 attributes automatically created when you generate a model: id, created_at, updated_at
+
+check out .pluralize rails method
+  -when rewatching it might be worth following along again in Desktop/copy_cook_book (basically got everything done in cookbook going on in contacts_app - see runner.rb)
+
+
+json.formatted block - 
+
+yagni - ya aint gonna need it (why are you spending time on that feature, you're never going to use it...) 
+
+partials
+  - always start with _ 
+  - a parital is going to display 1
+  - sytanx says you should be accessing a local variable  
+  - ! in jbuilder indicates it's not a "normal" key
+  - show syntax:
+    json.partial! @product, partial: 'product', as: :product
+  -index syntax:
+    json.array! @products, partial: 'product', as: :product
+
+number_to_currency(number) - method in rails to convert to currency 
+
+** if you don't need to define a vairable in a method, don't define it (if you're not going to call it, don't define it)
+** don't name a variable with in a method the name of the method, it runs the risk of creating a recurisve loop
+  "never name the local variable the same thing as the method name"
+
+
+###
+Computer Science: Easier than rocket science
+###
+
+Efficient Code - often a trade off between:
+  -runs quickly
+  -takes up minimal memory
+
+What is "Fast" code?
+  -we measure and analyze how fast code is by the number of steps it takes
+
+Data structures - things that hold data (e.g. arrays, hashes)
+Algorithms - instructions given to a computer (e.g. all the code you've ever written)
+
+Data Structure: The Array
+  The four operations:
+    1) read - look up the value at a particular index
+    2) search - find the index of a particular array
+    3) insert - add an element to the array
+    4) delete - remove a value of 
+
+N steps - the maximum number of steps an algorithm takes
+
+Data Structures: The Set (an array with no duplicate values)
+  
+
+###
+Rewatching Class Lecture: Model Methods
+###
+
+SQL doesn't have arrays, if you want to store something like an array you need a tool to make it an array. 
+  split("delimter")
+
+You can write an if statement on one line:
+  time_message += "#{hours} #{ 'Hour'.pluralize(hours) }" if hours > 0
+    # take time_message and add hours if hours is greated than zero
+  time_message += ", " if hours > 0 && minutes > 0
+    # take time_message and add ", " if hours is greater 0 and minutes > 0
+  time_message += "#{minutes} #{ 'Minute'.pluralize(minutes) }" if minutes > 0
+    # take time_message and add minutes if miuntes are greater than zero
+
+  "if you put if in the middle of a line, the thing that came before runs, only if the thing that after returns true."
+    -unless also works this way
+
+
+There is a convention in Rails, that APIs should handle all the heavy duty logic because it is built to scrable up data and reorganize it in a way that others things like an iphone app or a js app can ultilize it without many heavy lifting tools over there. 
+
+The Rails gem has a libary of plural and singular:
+  Pluralize is a method in Rails, if i have a string that is singular I can pluralize that if I have a number that's not 1. Hour -> Hours:
+    hours = prep_time / 60
+    'Hour'.pluralize(hours)
+
+
+Syntax:
+Think of the skipped lines below as marking paragraphs. Collect them by the purpose they are doing. More art than science. 
+       
+        def friendly_prep_time
+          hours = prep_time / 60
+          minutes = prep_time % 60
+          time_message = ""
+
+          time_message += "#{hours} #{ 'Hour'.pluralize(hours) }" if hours > 0
+          time_message += ", " if hours > 0 && minutes > 0
+          time_message += "#{minutes} #{ 'Minute'.pluralize(minutes) }" if minutes > 0
+          
+          time_message
+        end
+
+It's convention to break up fromatted values from raw values (as they live in the db) in the view (api response):
+
+          json.id contact.id
+          json.first_name contact.first_name
+          json.last_name contact.last_name
+          json.full_name contact.full_name
+          json.email contact.email
+          json.phone_number contact.phone_number
+
+          json.formated do
+            json.updated_at  contact.friendly_updated_at
+            json.message "testing how this looks"
+            json.japanese_phone contact.japanese_prefix
+          end
+
+Partial syntax says you should be accessing a local variable. 
+  json.partial! @recipe, partial: 'recipe', as: :product
+                                                  ^this defines the local variable in from the partial
+
+
+number_to_currency(number_to_format) : this will fomrat as a currecny.               

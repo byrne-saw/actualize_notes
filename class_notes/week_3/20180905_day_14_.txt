@@ -1,0 +1,20 @@
+capitalize - ruby method to capitalize the first letter of a string
+titleize - rails method to capitalize each word of a string
+
+##
+Active Record Queries
+##
+
+What we write in Rails to produce SQL.
+Active Record is it's own gem, but was developed with Rails. Typically it would only be used in Rails. 
+
+? will sanitize sql statements to prevent sql injection - it forces a string to replace the ?
+
+select * from recipes order by id asc limit 1;
+select * from recipes order by id desc limit 1;
+
+count and length are different methods - count is activerecord, length is ruby
+
+activerecord returns among other things an activerecord relation
+
+cmd p - in sublime let's you jump to files

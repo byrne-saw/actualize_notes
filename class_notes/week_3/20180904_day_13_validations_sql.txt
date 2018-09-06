@@ -1,0 +1,71 @@
+Just because something saves in the database, doesn't mean it will stay in the database. It's possible to store longer than 255 characters in a string field, but could be dropped later. 
+  Double check that you're storing things as the correct database.
+
+Migration names need to be unique. 
+
+Validations:
+  https://guides.rubyonrails.org/active_record_validations.html
+
+Ranges: include the first number and last ..
+        include the first, but not the last ...
+
+Best practice to do one validation / line - this will throw separate errors for each validation, rather than only one error for a bunch of validations on the same line
+
+Rollback means it was not entered into the database.
+
+Happy path / Sad path
+  Happy Path - if everything goes the way we expected it to
+  Sad Path - something didn't go the way we want it to go, and we don't want our application to break
+
+Return value of save is a boolean.
+
+In class exercise:
+Use SQL to grab the following data from the employees database:
+  Get all info about employees whose last names begin with “Z”.
+    select * from employees where last_name like 'Z%';
+
+  Get the first name and last name of employees whose last names begin with “Mi”.
+    select first_name, last_name from employees where last_name like 'Mi%';
+
+  Get first name,  last name, and birthday of 5 oldest employees.
+    select first_name, last_name, birth_date from employees order by birth_date limit 5;
+
+  Get all info about the 5 most recent hires.
+    select * from employees order by hire_date desc limit 5;
+
+  Get all info about 5 most recent female hires.
+    select * from employees where gender = 'F' order by hire_date desc limit 5;
+
+  Bonus: Get all the info on all employees whose first name is Mario or Luigi.
+    select * from employees where first_name = 'Mario' or first_name = 'Luigi';
+
+  Bonus: Get only the first and last name of employees without the the last name “Aingworth.”
+    select first_name, last_name from employees where last_name <> 'Aingworth';
+
+  Bonus: Get all the info on employees whose first name is Arif, but only those hired between 1988 and 1992.
+    select * from employees where first_name = 'Arif' and hire_date between '19880101' and '19921231';
+
+  Bonus: How many employees were making over $100,000 a year on June 24, 1992? Return only a number.
+    select 
+      count(*) 
+    from 
+      employees e
+      join salaries s on e.emp_no = s.emp_no
+    where 
+      s.salary > 100000 
+      and s.from_date <= '19920624'
+      and s.to_date >= '19920624'
+    ;
+
+  Bonus: Repeat exercise #2 without using the LIKE keyword.
+    select 
+      first_name, 
+      last_name 
+    from 
+      employees 
+    where 
+      substring(last_name from 1 for 2) = 'Mi';
+
+  Uber bonus: Research how to do a case-insensitive search in postgres and try it out in Postico
+    select * from employees where first_name ilike '%ma%'
+

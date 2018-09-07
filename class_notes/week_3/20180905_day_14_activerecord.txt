@@ -17,4 +17,4 @@ count and length are different methods - count is activerecord, length is ruby
 
 activerecord returns among other things an activerecord relation
 
-cmd p - in sublime let's you jump to files
+cmd p - in sublime let's you jump to files 

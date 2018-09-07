@@ -1,0 +1,44 @@
+Associations (links) 
+
+Has Many
+
+Normalization - breaking a table into multiple tables, and reducing down to non-duplicated data 
+
+*must always document the assoication between two connected instances
+
+foreign key - Rails assumes it will be the id - uses the name of table_id automagically
+
+one to many - one instance that can be assoicated with many instances on another table
+
+foreign key must always be an integer
+
+belongs_to - the assoication of the cows table is cows belongs_to a farmer
+has_many - farmer has_many cows
+
+"brand the cow, not the farmer"
+
+rake commands are built to migrate or drop a database - to see all rake commands: rake -T
+
+mass assignment:
+  Product.all.each { |product| product.update(supplier_id: rand(1..2))}
+
+Pluck - activerecord attribute that puls out the unique values from a set
+  supplier_ids = Supplier.pluck(:id)
+  Product.all.each { |product| product.update(supplier_id: supplier_ids.sample) }
+
+## association methods written out (longhand)
+      class Supplier < ApplicationRecord
+        def products
+          Product.where(supplier_id: id)
+        end
+      end
+
+      class Product < ApplicationRecord
+        def supplier
+          Supplier.find_by(id: supplier_id)
+        end
+      end
+##
+
+Active Record Associations can be treated just like arrays
+

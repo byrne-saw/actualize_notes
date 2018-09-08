@@ -69,3 +69,43 @@ Use SQL to grab the following data from the employees database:
   Uber bonus: Research how to do a case-insensitive search in postgres and try it out in Postico
     select * from employees where first_name ilike '%ma%'
 
+##
+Re-watching Lecture
+##
+
+Validations
+  -go in the model class (they validate whether a model should create a new instance)
+  -should be the first thing after you open a model class
+  -validations on take place during the act of creating or updating the database
+
+  :presence
+      validates :name, presence: true
+  :uniqueness
+      validates :email, uniqueness: true
+  :numericality
+      validates :points, numericality: true
+      validates :games_played, numericalaity: { only_integer: true }
+  :length
+      validates :name, length: { minimum: 2 }
+      validates :bio, length: { maximum: 500 }
+      validates :password, length: { in: 6..20 }
+      validates :registration_number, length: { is: 6 }
+  
+errors happen the moment you try to add something to the database
+  variable.save (roll back because of validations)
+  variable.errors - prints all the errors
+  variable.errors.full_messages - more readable errors
+
+Happy path / Sad path
+  Happy Path - if everything goes the way we expected it to
+  Sad Path - something didn't go the way we want it to go, and we don't want our application to break
+
+  In the controller you add happy/sad paths. Return of .save is boolean (true/false)
+    example:
+      if @product.save
+        render 'show.json.jbuilder'
+      else
+        render json: {errors: @product.errors.full_messages }, status: :unprocessable_entity
+      end
+
+  

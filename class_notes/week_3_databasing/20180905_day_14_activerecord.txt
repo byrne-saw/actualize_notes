@@ -18,3 +18,121 @@ count and length are different methods - count is activerecord, length is ruby
 activerecord returns among other things an activerecord relation
 
 cmd p - in sublime let's you jump to files 
+
+
+##
+rewatching lecture
+##
+
+ActiveRecord Queries
+ SQL: SELECT * FROM recipes;
+ Rails: Recipe.all
+
+  SQL:
+    SELECT *
+    FROM recipes
+    WHERE chef = 'Rachel Ray';
+  Rails: 
+    Recipe.where(chef: "Rachel Ray")
+    or
+    Recipe.where("chef = ?", "Rachel Ray")
+
+  SQL:
+    SELECT *
+    FROM recipes
+    WHERE prep_time > 10;
+  Rails:
+    Recipe.where("prep_time > ?", 10)
+
+  SQL:
+    SELECT * 
+    FROM recipes 
+    WHERE chef = 'Rachel Ray'
+    LIMIT 1;
+  Rails:
+    Recipe.find_by(chef: "Rachel Ray")
+
+  SQL:
+    SELECT *
+    FROM recipes
+    ORDER BY chef DESC;
+  Rails: 
+    Recipe.all.order(chef: :desc)
+
+  SQL:
+    SELECT *
+    FROM recipes
+    ORDER BY chef;
+  Rails:
+    Recipe.all.order(:chef)
+
+  SQL:
+    SELECT *
+    FROM recipes
+    WHERE chef LIKE '%Ray%';
+  Rails:
+    Recipe.where("chef LIKE ?", "%Ray%")
+
+  SQL:
+    SELECT *
+    FROM recipes
+    WHERE chef LIKE '%%Ray%'
+    ORDER BY prep_time;
+  Rails:
+    Recipe.where("chef LIKE ?", "%Ray%").order(:prep_time)
+
+  SQL:
+    SELECT name
+    FROM recipes
+    WHERE chef LIKE '%bread%'
+      OR description LIKE '%bread%'
+      OR title LIKE '%bread%';
+  Rails:
+    Recipe.where("chef LIKE ? OR description LIKE ? OR title LIKE ?", "%bread%", "%bread%", "%bread%")
+
+  SQL:
+    SELECT * 
+    FROM recipes
+    ORDER BY id DESC
+    LIMIT 1;
+  Rails:
+    Recipe.last
+
+  SQL:
+    SELECT COUNT(*)
+    FROM recipes;
+  Rails:
+    Recipe.count
+    (implicit all...)
+
+  SQL:
+    SELECT SUM(prep_time)
+    FROM recipes;
+  Rails:
+    Recipe.sum(:prep_time)
+
+  SQL:
+    SELECT AVG(prep_time)
+    FROM recipes;
+  Rails:
+    Recipe.average(:prep_time)
+
+
+
+
+
+SQL Injection
+  example: 
+    user_input = "'OR '' = '"
+    Recipe.where("title iLIKE '#{user_input}'")
+
+    SQL becomes: SELECT "recipes".* FROM "recipes" WHERE (title iLIKE  '' OR '' = '') 
+      -return where title like blank or everything...
+      -returns the whole table '' = '' is true for everything
+
+    if you use the ?:
+    Recipe.where("title iLIKE ?", user_input) 
+    SQL: SELECT "recipes".* FROM "recipes" WHERE (title iLIKE  ''' OR '''' = '')
+      -returns nothing
+
+

@@ -42,3 +42,4 @@ Pluck - activerecord attribute that puls out the unique values from a set
 
 Active Record Associations can be treated just like arrays
 
+

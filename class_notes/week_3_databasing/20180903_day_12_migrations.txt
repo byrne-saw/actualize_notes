@@ -2,9 +2,9 @@
 How our data is organized in the database
 ##
 
-  rake db:create - makes a file cabnite
+  rake db:create - makes a file cabinet 
   rails g migration - the organization structure, like files
-  rake db:migrate - files go into file cabnite
+  rake db:migrate - files go into file cabinet 
   seeds.rb is the data, just a ruby file 
     rake db:seed - the data is translated through sql and pushed into the database
 
@@ -19,7 +19,7 @@ Convention of a class in Ruby is singular, a table in SQL is plural.
 
 Before you rake db:migrate you can change the migrate file.  Never touch it after it's been migrated.
 
-Afterg migrating, a schema is added. This is a report. Don't change this directly in the file. A Schmea is generated each time you do a migrate. 
+After migrating, a schema is added. This is a report. Don't change this directly in the file. A Schema is generated each time you do a migrate. 
 
 Generating a migration to add something to a model.
 
@@ -29,7 +29,7 @@ Generating a migration to add something to a model.
 In the new migration file: 
       class AddPriceToProducts < ActiveRecord::Migration[5.2]
         def change
-          add_column :prodcuts, :price, :integer
+          add_column :products, :price, :integer
         end
       end
 
@@ -39,32 +39,32 @@ Rails Guides - Rails documentation: https://guides.rubyonrails.org/
   Ruby uses floats - try 0.28 * 100 in irb 
   Postgres doesn't like Binary files (which are images/movies/other files)
   :primary_key 
-  string - 255 lenghth limit
+  string - 255 length limit
   text - Unlimited length (depending on DBMS)
 https://stackoverflow.com/questions/11889048/is-there-documentation-for-the-rails-column-types
 
-When you drop a database and then rebuild it, it will use all the migration files to rebuild the db strcutre. Another reason why you must not change the migration files after they are migrated. 
+When you drop a database and then rebuild it, it will use all the migration files to rebuild the db structure. Another reason why you must not change the migration files after they are migrated. 
 
 decimals
-  need to define percision and scale
+  need to define precision and scale
   scale is how many decimal places to the right
-  percision is how many total characters it takes
+  precision is how many total characters it takes
 
 id - can't be part of any attribute in Rails - even Example_id 
   same for type
 
-in irb, or rails console you can us an _ to refer to the previous retruned value
+in irb, or rails console you can us an _ to refer to the previous returned value
 
 sublime text 
-  - multiple cursors, having something highlighted, ctrl + t
-  - cmd c on a line will copy a whole line as defult (when nothing is highlighted) 
+  - multiple cursors, having something highlighted, ctrl + t will rotate them
+  - cmd c on a line will copy a whole line as default (when nothing is highlighted) 
 
 save the data in a database before you make changes
   there's a gem seed_dump that will take all the data from your database and write it to your seed.rb file
 
       To use seed dump gem
 
-      Stop rails server with Ctl + c
+      Stop rails server with ctrl + c
       gem ‘seed_dump’ in gem file
       bundle
       rails db:seed:dump
@@ -75,5 +75,23 @@ save the data in a database before you make changes
       rails server
 
 
+## 
+Reviewing Lecture
+##
+
+A float is not a precise measurement, it's close. So close, most of the time we don't care. (office space)
+  Postgres doesn't deal with floats, but uses decimals. When we get it back in rails it "looks" like a float. 
+
+Short hand for migrations:
+  ex: 
+  rails g migration AddStockToProducts stock:integer
+  add_column :products, :stock, :integer  - this is automatically added to the migration file
+  AddXXXXXToYYYYYYY
+    -uses Add and the ToTableNname to set up the file
+    -can use with RemoveXXXXFromTableNmae
+    -Add To
+    -Remove From
+
+If you mess up your migration file, as long as you don't migrate you can change the file or delete it. 
 
 

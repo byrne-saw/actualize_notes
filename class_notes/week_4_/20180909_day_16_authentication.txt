@@ -1,0 +1,101 @@
+adding images demo:
+  1) create image model (josh added an "alt" attribute)
+  2) use rails console to pull all the urls from the Product model
+    -use an each loop: 
+        products = Product.all
+        products.each { |product| Image.create(url: product.image_url, product_id: product.id, alt: product.name)}
+  3) drop Products.image_url
+    -make a migration: rails g migration RemoveImageUrlFromProducts image_url:string
+    -check migration 
+    -rake db:migrate
+  4) add assoications to models
+    -product.rb 
+      has_many :images
+    -image.rb
+      belongs_to :product
+  5) test:
+    image = Image.first
+    image.product
+    product = Product.find(4)
+    product.images 
+      (even though we've only give each product one image, this returns an array showing that it's many - a collection of one)
+  6) change _product.json.jbuilder
+      remove old product.image_url entry
+      create and image partial and link it to the product partial:
+  7) remove image url from product_contoller.rb
+
+  My view has singular image - where/what should i have named to have images plural?
+
+  create - makes an instance and saves it at the same time
+
+
+##
+Encryption
+##
+
+"We do not protect ourselves for if we get attacked, but when"
+
+One-way-encryption is what we'll be using.
+
+Slides: The Enigma Machine
+  Encrypting Passwords
+  cypher
+  every letter has a numerical value, this allows for mathematical operations
+  .ord gives the numerical value of a letter
+  brute-force - try every possibility out until you find one that works
+
+  bcrypt - a gem to encrypt passwords
+
+
+Slides: The Stateless Web
+  latency - the time it takes to get back to you 
+    distance / load impacts
+
+  load balancer - common way to run websites, multiple servers 
+
+  cookie - can be used as a pass to show you've been authenticated
+    -info that needs to persist for a single user over multiple calls
+    -in the past you could put as much as you wanted into a cookie, became a security concern, now it's limited
+    -unencrypted info can be stored in cookies
+  json web tokens - jwts - encrypted strings that can be held in a cookie
+
+authentication - are you who you say you are?
+
+Setting up a usermodel in cookbook
+  password_digest 
+    _digest is important for the tool we're using 
+
+  in gem file, uncomment bcrypt
+  add has_secure_password to the model with the password
+
+How Rails Functions for "security and such"
+  jwt gem - allows you to easily encrypt and decrypt 
+  salt - adds a bit of randomness to the encryption encoding 
+
+In config, there is a credentials.yml.enc file. It is an encoded set of instructions for security of the app. The "secret key base" is hidden in this file. 
+  Rails.application.credentials.fetch(:secret_key_base)
+
+
+##
+Computer Science
+##
+Data Structures - The Ordered Array
+  -more effort to insert, less effort to search
+
+Algorithms - Binary Search (only works with an ordered array)
+  -start right in the middle, is this X? greater or less than?
+  -let's you knock out half of the array
+  -repeat with the resulting half
+  -every time you double the size of the ordered array it adds one step to the number of steps needed to complete the search
+  -the beauty of binary search is that each step eliminates 50% of the remaining elements!
+  -On an ordered array of 100 elements:
+    Linear Search : 100 Steps
+    Binary Steps: 7
+
+Big O Notation
+  the complexity of an algorithm is usually described in terms of "Big 0"
+  Answers: "How does the number of steps change as the data increases?"
+  0(1): the algorithm takes the same number of steps even when the data increases
+  0(N): the algorithm takes as many steps as there are elements
+  0(log N): the algorithm increases by one step each time the data is doubled 
+  

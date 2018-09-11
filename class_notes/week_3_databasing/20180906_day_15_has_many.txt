@@ -1,0 +1,128 @@
+Associations (links) 
+
+Has Many
+
+Normalization - breaking a table into multiple tables, and reducing down to non-duplicated data 
+
+*must always document the assoication between two connected instances
+
+foreign key - Rails assumes it will be the id - uses the name of table_id automagically
+
+one to many - one instance that can be assoicated with many instances on another table
+
+foreign key must always be an integer
+
+belongs_to - the assoication of the cows table is cows belongs_to a farmer
+has_many - farmer has_many cows
+
+"brand the cow, not the farmer"
+
+rake commands are built to migrate or drop a database - to see all rake commands: rake -T
+
+mass assignment:
+  Product.all.each { |product| product.update(supplier_id: rand(1..2))}
+
+Pluck - activerecord attribute that puls out the unique values from a set
+  supplier_ids = Supplier.pluck(:id)
+  Product.all.each { |product| product.update(supplier_id: supplier_ids.sample) }
+
+## association methods written out (longhand)
+      class Supplier < ApplicationRecord
+        def products
+          Product.where(supplier_id: id)
+        end
+      end
+
+      class Product < ApplicationRecord
+        def supplier
+          Supplier.find_by(id: supplier_id)
+        end
+      end
+##
+
+Active Record Associations can be treated just like arrays
+
+
+##
+Rewatching Lecture
+##
+
+has_many
+ Model:
+    class Farmer < ActiveRecord::Base
+
+      def cows
+        Cow.where(farmer_id: id)
+      end
+
+    end
+
+Controller:
+  @farmer = Farmer.find_by(name: "Billy")
+  @cows = @farmer.cows
+
+
+The above model can be replaced with:
+Model:
+  class Farmer < ActiveRecord::Base
+    has_many :cows
+  end 
+
+Rails Assumes:
+  -the name must be plural
+  -#cows is a method name
+  -That a Cow class exists
+  -we want a collection made of Cow objects
+  -That cow has a farmer_id
+
+
+--
+
+belongs_to
+  Model:
+    class Cow < ActiveRecord::Base
+
+      def farmer
+       end
+
+    end
+
+  Controller:
+    @cow = Cow.find_by(name: "Rebecca")
+    @farmer = @cow.farmer
+
+    The above model can be replaced with:
+    Model:
+      class Cow < ActiveRecord::Base
+        belongs_to :farmer
+      end 
+
+Rails Assumes:
+  -the name must be singular
+  -#farmer is a method name
+  -that a Farmer class exists
+  -we want a single Farmer Object
+  - that this cow has a farmer_id
+
+##
+
+Making a rake file:
+  lib/tasks/bubbles.rake
+
+  task :bubbles do
+    puts "I'm forever blowing bubbles"
+  end
+
+  ^ could set these up for anything you'd want - in the terminal, rake bubbles
+
+  product.update(supplier_id: 1) 
+    ^this chagnes, and updates prodcut
+  Product.update_all(supplier_id: rand(1..3))
+    ^ this would update all the instances to the same number
+
+  Product.all.each { |prodcut| product.update(supplier_id: rand (1..3)) }
+    ^ this will run rand on each instance of product 
+
+Supplier.pluck(:id)
+  ^ this would grab a random Supplier instance
+

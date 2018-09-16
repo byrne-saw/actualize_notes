@@ -1,0 +1,17 @@
+Rails.application.credentials.fetch(:secret_key_base)
+
+You don't need a controller for every model you make. You don't need a controller for every model you make. But, they typcially go hand in hand. 
+
+begin 
+  bob
+rescue => e
+  puts "hey bob #{e}"
+end
+
+user_ids = User.pluck(:id)
+Contact.all.each { |contact| contact.update(user_id: user_ids.sample) }
+
+## 
+Rewatching Lecture
+##
+

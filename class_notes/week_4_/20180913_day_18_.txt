@@ -1,0 +1,14 @@
+worked with richard on big partner exercise 
+
+user object
+
+attributes, what an object IS
+behavior, what a object does
+
+if it's a writer, it needs slef.
+if it's a reader, it doesn't
+
+before_action :authenticate_user, except: [:index]
+before_action :authenticate_user, except: [:index, :create]
+
+i didn't have my helper_method :current_user until we added the authenticate_user

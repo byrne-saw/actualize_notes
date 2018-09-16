@@ -1,0 +1,55 @@
+## Authorization ##
+-Permissions, what are you allowed to do (now that you're authenticated)
+
+3 roles for API
+  1) Guests (can browser and view products w/o being logged in) 
+  2) Customers (must be logged in) 
+  3) Admin (allowed to create, update, or delete products)
+     - have a special login 
+
+
+add_column :users, :admin, :boolean, default: false
+                                             ^ important to have space to avoid confusing with namespacing 
+
+## Has Many Through ##
+  -adds to has_many and belongs_to
+Join Table - used to document relationships / instances of connection /interactions between two or more tables  
+  -many to many relationships
+  -don't call it 'join table'
+  -standard way to name is to "smash" the two tables together and pluralize 
+    "ProductCategories" (what comes first is arbitrary ie "CategoryProducts" is just as good)
+
+
+SQL - making the association
+  has_many through
+    has_many :products, through :product_categories
+
+Rails Assumptions
+  -order matters, must define product_categories association before has_many through association
+    -must set up dependent associations first
+  -that each handshake has a belongs_to category method
+  -rails will take either a has_many or belongs_to association on the handshake
+  -has_many through returns a collection of Category objects (array)
+  -has_many through does not return unique Category Objects
+
+
+http://ondras.zarovi.cz/sql/demo/
+  ^useful for designing schema
+
+
+
+##
+Big O Continued - Slow and Steady Loses the Race
+##
+
+
+Chapter 7 Jay's book explains hashes
+
+Using a hash takes up additional memory - namely, storing dta in a hash. However the nested llop approach doesn't require storing anyhting additional in memory. Everything is a tradeoff!
+
+
+
+
+
+
+

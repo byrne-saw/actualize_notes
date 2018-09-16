@@ -126,3 +126,4 @@ Making a rake file:
 Supplier.pluck(:id)
   ^ this would grab a random Supplier instance
 
+
